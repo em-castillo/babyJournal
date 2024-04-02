@@ -1,0 +1,33 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a href="#" class="navbar-brand">Baby Journal</a>
+    </div>
+
+    <div class="collapse navbar-collapse" [ngClass]="{ in: isNavbarCollapsed }">
+      <ul class="nav navbar-nav">
+        <li routerLinkActive="active">
+          <a [routerLink]="['/milestones']">Milestones</a>
+        </li>
+        <li routerLinkActive="active">
+          <a [routerLink]="['/memories']">Memories</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown" appDropdown>
+          <a
+            class="dropdown-toggle"
+            role="button"
+            (click)="toggleUserDropdown()"
+            >User <span class="caret"></span
+          ></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Login</a></li>
+            <li><a href="#">Other</a></li>
+            <li><a href="#">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
