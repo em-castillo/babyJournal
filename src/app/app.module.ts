@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +13,7 @@ import { MsListComponent } from './milestones/ms-list/ms-list.component';
 import { MsDetailComponent } from './milestones/ms-detail/ms-detail.component';
 import { MemoriesPostComponent } from './memories/memories-post/memories-post.component';
 import { MemoriesEditComponent } from './memories/memories-list/memories-edit.component';
+import { MilestonesFilterPipe } from './milestones/ms-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -20,11 +24,15 @@ import { MemoriesEditComponent } from './memories/memories-list/memories-edit.co
     MsListComponent,
     MsDetailComponent,
     MemoriesPostComponent,
-    MemoriesEditComponent
+    MemoriesEditComponent,
+    MilestonesFilterPipe
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    FormsModule,
+    AppRoutingModule,
+    DragDropModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
