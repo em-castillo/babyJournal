@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MemoriesPostComponent } from './memories-post.component';
+import { MemoriesDetailComponent } from './memories-detail.component';
 
-describe('MemoriesPostComponent', () => {
-  let component: MemoriesPostComponent;
-  let fixture: ComponentFixture<MemoriesPostComponent>;
+describe('MemoriesDetailComponent', () => {
+  let component: MemoriesDetailComponent;
+  let fixture: ComponentFixture<MemoriesDetailComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [MemoriesPostComponent]
+      declarations: [MemoriesDetailComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(MemoriesPostComponent);
+    fixture = TestBed.createComponent(MemoriesDetailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

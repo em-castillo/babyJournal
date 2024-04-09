@@ -21,7 +21,7 @@
       </div>
     </div>
     <div class="pull-right pad-left-right">
-      <a class="btn btn-success" [routerLink]="['new']">New Milestone</a>
+      <a [routerLink]="['new']" class="btn btn-success">New Milestone</a>
     </div>
   </div>
   <div cdkDropList [cdkDropListData]="milestones" class="panel-body">
@@ -29,6 +29,11 @@
       cdkDrag
       *ngFor="let milestone of milestones | milestonesFilter : term"
       [cdkDragData]="milestone"
-    ></div>
+    >
+      <!-- <app-ms-detail
+        [milestone]="milestone"
+        (click)="onSelected(milestone)"
+      ></app-ms-detail> -->
+    </div>
   </div>
 </div>

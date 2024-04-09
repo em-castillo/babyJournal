@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Milestones } from '../milestones.model';
 
 @Component({
   selector: 'app-ms-detail',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrl: './ms-detail.component.css'
 })
 export class MsDetailComponent {
+  @Input() milestone:Milestones;
+  @Input() index: number;
+  
 
 }

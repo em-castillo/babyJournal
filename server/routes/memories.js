@@ -7,7 +7,7 @@ var router = express.Router();
 //get
 router.get('/', (req, res, next) => {
     Memories.find()
-    // .populate('children')
+    .populate('children')
     .then((memories) => {
         res.status(200).json({
             message: "Retrieved memories from the database.",
@@ -25,20 +25,19 @@ router.get('/', (req, res, next) => {
  //post
  router.post('/', async (req, res, next) => {
     try {
-      const maxDocumentId = await sequenceGenerator.nextId("documents");
+      const maxMemoryId = await sequenceGenerator.nextId("memories");
   
-      const document = new Document({
-        id: maxDocumentId,
-        name: req.body.name,
+      const memory = new Memories({
+        id: maxMemoryId,
+        title: req.body.title,
         description: req.body.description,
-        url: req.body.url
       });
   
-      const createdDocument = await document.save();
+      const createdMemory = await memory.save();
   
       res.status(201).json({
-        message: 'Document added successfully',
-        document: createdDocument
+        message: 'Memory added successfully',
+        memory: createdMemory
       });
     } catch (error) {
       res.status(500).json({
@@ -50,16 +49,16 @@ router.get('/', (req, res, next) => {
 
   //put
   router.put('/:id', (req, res, next) => {
-    Document.findOne({ id: req.params.id })
-      .then(document => {
-        document.name = req.body.name;
-        document.description = req.body.description;
-        document.url = req.body.url;
+    Memories.findOne({ id: req.params.id })
+      .then(memory => {
+        memory.title = req.body.title;
+        memory.description = req.body.description;
+
   
-        Document.updateOne({ id: req.params.id }, document)
+        Memories.updateOne({ id: req.params.id }, memory)
           .then(result => {
             res.status(204).json({
-              message: 'Document updated successfully'
+              message: 'Memory updated successfully'
             })
           })
           .catch(error => {
@@ -71,20 +70,20 @@ router.get('/', (req, res, next) => {
       })
       .catch(error => {
         res.status(500).json({
-          message: 'Document not found.',
-          error: { document: 'Document not found'}
+          message: 'Memory not found.',
+          error: { memory: 'Memory not found'}
         });
       });
   });
 
   //delete
   router.delete("/:id", (req, res, next) => {
-    Document.findOne({ id: req.params.id })
-      .then(document => {
-        Document.deleteOne({ id: req.params.id })
+    Memories.findOne({ id: req.params.id })
+      .then(memory => {
+        Memories.deleteOne({ id: req.params.id })
           .then(result => {
             res.status(204).json({
-              message: "Document deleted successfully"
+              message: "Memory deleted successfully"
             });
           })
           .catch(error => {
@@ -96,8 +95,8 @@ router.get('/', (req, res, next) => {
       })
       .catch(error => {
         res.status(500).json({
-          message: 'Document not found.',
-          error: { document: 'Document not found'}
+          message: 'Memory not found.',
+          error: { memory: 'Memory not found'}
         });
       });
   });

@@ -1,0 +1,18 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="row pad-left-right">
+      <span class="pull-left title">Memories</span>
+      <a [routerLink]="['new']" class="btn btn-success pull-right"
+        >Add Memory</a
+      >
+    </div>
+  </div>
+  <div class="panel-body">
+    <div class="center-panel">
+      <app-memories-item
+        *ngFor="let memory of memories"
+        [memory]="memory"
+      ></app-memories-item>
+    </div>
+  </div>
+</div>

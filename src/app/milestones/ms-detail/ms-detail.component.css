@@ -1,0 +1,11 @@
+.milestone-item{
+    border:1px solid #ddd;
+    border-radius: 8px;
+}
+
+.checkbox{
+    margin-top: 2rem;
+    float: right;
+    width:80%;
+    height: 20px;
+}

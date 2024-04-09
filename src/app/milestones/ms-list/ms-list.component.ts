@@ -12,11 +12,7 @@ export class MsListComponent {
   private subscription: Subscription;
   term: string;
 
-  milestones: Milestones[] = [
-    new Milestones(
-      '1', 'rolling', 'baby rools on tummy'
-    )
-  ];
+  milestones: Milestones[] = [];
 
   search(value: string) {
     this.term = value;
