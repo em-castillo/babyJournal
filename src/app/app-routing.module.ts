@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { MilestonesComponent } from './milestones/milestones.component';
 import { MsListComponent } from './milestones/ms-list/ms-list.component';
 import { MsPostComponent } from './milestones/ms-post/ms-post.component';
+
 import { MemoriesComponent } from './memories/memories.component';
 import { MemoriesDetailComponent } from './memories/memories-detail/memories-detail.component';
 import { MemoriesEditComponent } from './memories/memories-edit/memories-edit.component';

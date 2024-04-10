@@ -7,7 +7,7 @@ var router = express.Router();
 //get
 router.get('/', (req, res, next) => {
     Memories.find()
-    .populate('children')
+    // .populate('children')
     .then((memories) => {
         res.status(200).json({
             message: "Retrieved memories from the database.",
@@ -25,7 +25,7 @@ router.get('/', (req, res, next) => {
  //post
  router.post('/', async (req, res, next) => {
     try {
-      const maxMemoryId = await sequenceGenerator.nextId("memories");
+      const maxMemoryId = await sequenceGenerator.nextId('memories');
   
       const memory = new Memories({
         id: maxMemoryId,

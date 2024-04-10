@@ -9,6 +9,10 @@ import { Milestones } from '../milestones.model';
 export class MsDetailComponent {
   @Input() milestone:Milestones;
   @Input() index: number;
-  
 
+  selected_chart(input: HTMLInputElement) {
+    input.checked === true
+      ? console.log('true')
+      : console.log('false');
+  }
 }

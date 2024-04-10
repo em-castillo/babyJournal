@@ -5,6 +5,6 @@ export class Memories{
         public id:string, 
         public title:string, 
         public description:string,
-        public children?:Memories[] 
+        // public children?:Memories[] 
         ){}
 }

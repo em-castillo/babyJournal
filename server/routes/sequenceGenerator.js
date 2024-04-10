@@ -3,9 +3,8 @@ var maxMilestoneId;
 var maxMemoryId;
 var sequenceId = null;
 
-const sequenceGenerator = {   //First, I restructured sequenceGenerator to be a variable containing the various methods.
-
-     async init() {    //Make this init() function asynchronous
+const sequenceGenerator = {   
+     async init() { 
           try {
                const sequence = await Sequence.findOne({}).exec();   
                if (!sequence) {
@@ -21,7 +20,6 @@ const sequenceGenerator = {   //First, I restructured sequenceGenerator to be a 
           },
 
      async nextId(collectionType) {
-              // Ensure the generator is initialized. If not, call the init() function above. 
               if (!this.sequenceId) {
                   await this.init();
               }

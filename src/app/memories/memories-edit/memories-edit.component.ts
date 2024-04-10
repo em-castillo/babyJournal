@@ -51,12 +51,12 @@ export class MemoriesEditComponent implements OnInit{
 
   onSubmit(form: NgForm){
   const value = form.value;
-  this.memory = new Memories(value._id, value.id, value.title, value.description);
+  let newMemory = new Memories(value._id, value.id, value.title, value.description);
   if (this.editMode) {
-    this.memoryService.updateMemory(this.originalMemory, this.memory);
+    this.memoryService.updateMemory(this.originalMemory, newMemory);
   } else {
-    this.memoryService.addMemory(this.memory);
-    console.log(this.memory);
+    this.memoryService.addMemory(newMemory);
+    console.log(newMemory);
   }
   this.router.navigate(['../'], {relativeTo: this.route});
 }

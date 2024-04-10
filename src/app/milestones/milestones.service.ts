@@ -90,17 +90,6 @@ import { Milestones } from './milestones.model';
           .subscribe(
             (responseData) => {
               this.milestones.push(responseData.milestone);
-              this.milestones.sort((a,b)=> {
-                const nameA = a.age.toUpperCase();
-                const nameB = b.age.toUpperCase();
-                if (nameA < nameB) {
-                  return -1;
-                }
-                if (nameA > nameB) {
-                  return 1;
-                }
-                return 0;
-              });
             }
           )};
     

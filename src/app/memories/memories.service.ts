@@ -20,7 +20,7 @@ import { Memories } from './memories.model';
     constructor(private http: HttpClient) {
         this.maxMemoryId = this.getMaxId();
     }
-    
+
     
       getMemories() {
         this.http.get('http://localhost:3000/memories')
@@ -70,23 +70,24 @@ import { Memories } from './memories.model';
         })
       }
     
-      addMemory(memory: Memories) {
-        if (!memory) {
+      addMemory(newMemory: Memories) {
+        if (!newMemory) {
           return;
         }
-    
-        memory.id = '';
+        
+        newMemory.id = '';
     
         const headers = new HttpHeaders({'Content-Type': 'application/json'});
     
-        this.http.post<{ message: string, memory: Memories }>('http://localhost:3000/memories',
-        memory,
-          { headers: headers })
-          .subscribe(
-            (responseData) => {
-              this.memories.push(responseData.memory);
+        this.http.post<{ message: string, memory: Memories }>('http://localhost:3000/memories/',
+        newMemory, { headers: headers })
+        .subscribe(
+          (responseData) => {
+            this.memories.push(responseData.memory);
+              this.storeMemories();
             }
-          );
+      );
+          
       }
     
       updateMemory(originalMemory: Memories, newMemory: Memories) {

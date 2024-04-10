@@ -4,6 +4,10 @@
     <p>{{ milestone.age }}</p>
   </div>
   <div class="col-xs-6 text-right">
-    <input class="checkbox" type="checkbox" />
+    <input
+      class="checkbox"
+      type="checkbox"
+      (change)="selected_chart($event.srcElement)"
+    />
   </div>
 </div>
