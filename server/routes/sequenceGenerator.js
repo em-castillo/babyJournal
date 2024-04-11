@@ -1,6 +1,7 @@
 const Sequence = require('../models/sequence');
 var maxMilestoneId;
 var maxMemoryId;
+var maxLinkId;
 var sequenceId = null;
 
 const sequenceGenerator = {   
@@ -13,6 +14,7 @@ const sequenceGenerator = {
                this.sequenceId = sequence._id;
                this.maxMilestoneId = sequence.maxMilestoneId;
                this.maxMemoryId = sequence.maxMemoryId;
+               this.maxLinkId = sequence.maxLinkId;
                } catch (err) {
                     console.error('Error initializing SequenceGenerator:', err);
                     throw err;
@@ -37,6 +39,11 @@ const sequenceGenerator = {
                     this.maxMemoryId++;
                     updateObject = { maxMemoryId: this.maxMemoryId };
                     nextId = this.maxMemoryId;
+                 break;
+                 case 'links':
+                    this.maxLinkId++;
+                    updateObject = { maxLinkId: this.maxLinkId };
+                    nextId = this.maxLinkId;
                  break;
                default:
                 throw new Error('Not a valid collection type');

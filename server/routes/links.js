@@ -1,43 +1,43 @@
 const sequenceGenerator = require('./sequenceGenerator');
-const Memories = require('../models/memories');
+const Links = require('../models/links');
 
 var express = require('express');
 var router = express.Router();
 
 //get
 router.get('/', (req, res, next) => {
-    Memories.find()
-    // .populate('children')
-    .then((memories) => {
+    Links.find()
+    .then((links) => {
         res.status(200).json({
-            message: "Retrieved memories from the database.",
-            memories: memories,
+            message: "Retrieved links from the database.",
+            links: links,
         });
     })
     .catch((err) => {
         res.status(500).json({
-            message: "Error retrieving memories from the database.",
+            message: "Error retrieving links from the database.",
             error: err
         });
     });
 });
 
- //post
- router.post('/', async (req, res, next) => {
+//post
+router.post('/', async (req, res, next) => {
     try {
-      const maxMemoryId = await sequenceGenerator.nextId("memories");
+      const maxLinkId= await sequenceGenerator.nextId("links");
   
-      const memory = new Memories({
-        id: maxMemoryId,
-        title: req.body.title,
-        description: req.body.description,
+      const link = new Links({
+        id: maxLinkId,
+        name: req.body.name,
+        url: req.body.url,
+        content: req.body.content,
       });
   
-      const createdMemory = await memory.save();
+      const createdLink = await link.save();
   
       res.status(201).json({
-        message: 'Memory added successfully',
-        memory: createdMemory
+        message: 'Link added successfully',
+        link: createdLink
       });
     } catch (error) {
       res.status(500).json({
@@ -49,16 +49,17 @@ router.get('/', (req, res, next) => {
 
   //put
   router.put('/:id', (req, res, next) => {
-    Memories.findOne({ id: req.params.id })
-      .then(memory => {
-        memory.title = req.body.title;
-        memory.description = req.body.description;
+    Links.findOne({ id: req.params.id })
+      .then(link => {
+        link.name = req.body.name;
+        link.url = req.body.url;
+        link.content = req.body.content;
 
   
-        Memories.updateOne({ id: req.params.id }, memory)
+        Links.updateOne({ id: req.params.id }, link)
           .then(result => {
             res.status(204).json({
-              message: 'Memory updated successfully'
+              message: 'Link updated successfully'
             })
           })
           .catch(error => {
@@ -70,20 +71,20 @@ router.get('/', (req, res, next) => {
       })
       .catch(error => {
         res.status(500).json({
-          message: 'Memory not found.',
-          error: { memory: 'Memory not found'}
+          message: 'Link not found.',
+          error: { link: 'Link not found'}
         });
       });
   });
 
   //delete
   router.delete("/:id", (req, res, next) => {
-    Memories.findOne({ id: req.params.id })
-      .then(memory => {
-        Memories.deleteOne({ id: req.params.id })
+    Links.findOne({ id: req.params.id })
+      .then(link => {
+        Links.deleteOne({ id: req.params.id })
           .then(result => {
             res.status(204).json({
-              message: "Memory deleted successfully"
+              message: "Link deleted successfully"
             });
           })
           .catch(error => {
@@ -95,8 +96,8 @@ router.get('/', (req, res, next) => {
       })
       .catch(error => {
         res.status(500).json({
-          message: 'Memory not found.',
-          error: { memory: 'Memory not found'}
+          message: 'Link not found.',
+          error: { link: 'Link not found'}
         });
       });
   });

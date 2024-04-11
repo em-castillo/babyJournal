@@ -115,7 +115,7 @@ import { Memories } from './memories.model';
           );
       }
     
-      deleteDocument(memory: Memories) {
+      deleteMemory(memory: Memories) {
         if (!memory) {
           return;
         }

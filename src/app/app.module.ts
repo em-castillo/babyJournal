@@ -17,6 +17,11 @@ import { MemoriesDetailComponent } from './memories/memories-detail/memories-det
 import { MemoriesItemComponent } from './memories/memories-item/memories-item.component';
 import { MemoriesListComponent } from './memories/memories-list/memories-list.component';
 import { MemoriesEditComponent } from './memories/memories-edit/memories-edit.component';
+import { LinksComponent } from './links/links.component';
+import { LinksDetailComponent } from './links/links-detail/links-detail.component';
+import { LinksEditComponent } from './links/links-edit/links-edit.component';
+import { LinksItemComponent } from './links/links-item/links-item.component';
+import { LinksListComponent } from './links/links-list/links-list.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +36,12 @@ import { MemoriesEditComponent } from './memories/memories-edit/memories-edit.co
     MemoriesDetailComponent,
     MemoriesItemComponent,
     MemoriesListComponent,
-    MemoriesEditComponent
+    MemoriesEditComponent,
+    LinksComponent,
+    LinksDetailComponent,
+    LinksEditComponent,
+    LinksItemComponent,
+    LinksListComponent
   ],
   imports: [
     BrowserModule,

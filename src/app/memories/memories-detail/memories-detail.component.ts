@@ -38,7 +38,7 @@ export class MemoriesDetailComponent {
   // }
 
   onDelete() {
-    this.memoryService.deleteDocument(this.memory);
+    this.memoryService.deleteMemory(this.memory);
     this.router.navigate(['/memories'], {relativeTo: this.route});
     console.log('deleted');
  }

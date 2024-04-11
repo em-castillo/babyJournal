@@ -12,6 +12,7 @@ var index = require('./server/routes/app');
 // ... ADD CODE TO IMPORT YOUR ROUTING FILES HERE ... 
 const memoriesRoutes = require('./server/routes/memories');
 const milestonesRoutes = require('./server/routes/milestones');
+const linksRoutes = require('./server/routes/links')
 
 // establish a connection to the mongo database
 mongoose.connect('mongodb+srv://babyJournal_user:babyJournal_user@cluster0.vklbxnl.mongodb.net/babyJournal?retryWrites=true&w=majority&appName=Cluster0')
@@ -58,6 +59,7 @@ app.use('/', index);
 // ... ADD YOUR CODE TO MAP YOUR URL'S TO ROUTING FILES HERE ...
 app.use('/memories', memoriesRoutes);
 app.use('/milestones', milestonesRoutes);
+app.use('/links', linksRoutes);
 
 // Tell express to map all other non-defined routes back to the index page
 app.get('*', (req, res) => {

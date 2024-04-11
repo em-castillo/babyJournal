@@ -9,6 +9,10 @@ import { MemoriesComponent } from './memories/memories.component';
 import { MemoriesDetailComponent } from './memories/memories-detail/memories-detail.component';
 import { MemoriesEditComponent } from './memories/memories-edit/memories-edit.component';
 
+import { LinksComponent } from './links/links.component';
+import { LinksDetailComponent } from './links/links-detail/links-detail.component';
+import { LinksEditComponent } from './links/links-edit/links-edit.component';
+
 const routes: Routes = [
   {path: '', redirectTo: '/milestones', pathMatch: 'full'},
   {path: 'milestones', component: MilestonesComponent, children: [
@@ -19,6 +23,11 @@ const routes: Routes = [
     {path: 'new' , component: MemoriesEditComponent},
     {path: ':id' , component: MemoriesDetailComponent},
     {path: ':id/edit' , component: MemoriesEditComponent}
+  ]},
+  {path: 'links', component: LinksComponent, children: [
+    {path: 'new' , component: LinksEditComponent},
+    {path: ':id' , component: LinksDetailComponent},
+    {path: ':id/edit' , component: LinksEditComponent}
   ]},
 ];
 
