@@ -30,7 +30,7 @@ import { Link } from './links.model';
              this.maxLinkId = this.getMaxId();
              this.linksListClone = this.links.slice();
              this.linkListChangedEvent.next(this.linksListClone);
-             console.log(this.links);
+            //  console.log(this.links);
           },
           error: (error: any) => {
             console.error(error);
